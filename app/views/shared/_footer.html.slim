@@ -1,0 +1,18 @@
+hr
+footer
+  .grid-container
+    .grid-x
+      .cell.small-4
+        h4.subheader Resources
+        ul.no-bullet
+          li = external_link_to "C4tK Homepage", "http://www.codeforthekingdomnashville.org/"
+          li = external_link_to "Project Source Code", "https://github.com/mellowfish/c4tk-2018"
+      .cell.small-4
+        h4.subheader Contributors
+        ul.no-bullet
+          li
+            ' Christopher Coleman
+            =' external_link_to("https://twitter.com/mellowfish") do
+              = fa_icon("twitter")
+            =' external_link_to("https://github.com/mellowfish") do
+              = fa_icon("github");
