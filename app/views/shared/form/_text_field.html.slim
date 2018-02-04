@@ -1,0 +1,5 @@
+.small-2.cell
+  = form.label(attribute, class: "middle text-right")
+.small-10.cell
+  =' form.text_field(attribute)
+  = render partial: "shared/form/errors", locals: { form: form, attribute: attribute }

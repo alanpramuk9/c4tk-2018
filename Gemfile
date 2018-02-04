@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Use ActiveModel has_secure_password
-# gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.7"
 
 # Use FontAwesome icon set
 gem "font-awesome-rails"
@@ -14,14 +14,17 @@ gem "font-awesome-rails"
 # Use Foundation for a CSS Framework
 gem "foundation-rails", "~> 6.0"
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "~> 5.1.4"
+# Use naught for NullObject pattern
+gem "naught"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 0.18"
 
 # Use Puma as the app server
 gem "puma", "~> 3.7"
+
+# Bundle edge Rails instead: gem "rails", github: "rails/rails"
+gem "rails", "~> 5.1.4"
 
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 5.0"
@@ -41,6 +44,9 @@ group :development, :test do
 end
 
 group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "rubocop"

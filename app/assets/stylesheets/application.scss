@@ -4,3 +4,13 @@
 hr {
   margin: 2rem auto;
 }
+
+.field_with_errors {
+  input {
+    border-color: $input-error-color;
+  }
+}
+
+.error {
+  color: $input-error-color;
+}
