@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
 
-  has_many :annotations
+  has_many :cards
 
   validates :email, uniqueness: { case_sensitive: false }, presence: true
 
@@ -13,8 +13,8 @@ class User < ApplicationRecord
     !persisted?
   end
 
-  def build_annotation_of_type(type)
-    Annotation.as_type(type).tap { |annotation| annotation.user_id = id }
+  def build_card_of_type(type)
+    Card.as_type(type).tap { |card| card.user_id = id }
   end
 end
 

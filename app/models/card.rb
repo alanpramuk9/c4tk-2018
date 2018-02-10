@@ -1,4 +1,4 @@
-class Annotation < ApplicationRecord
+class Card < ApplicationRecord
   belongs_to :user
 
   validates :user, presence: true
@@ -9,7 +9,7 @@ class Annotation < ApplicationRecord
     type = type.camelize
     type = "Quote" unless Kernel.const_defined?(type)
     klass = Kernel.const_get(type)
-    klass = Quote if klass.is_a?(Annotation)
+    klass = Quote if klass.is_a?(Card)
     klass.new
   end
 
@@ -26,7 +26,7 @@ class Annotation < ApplicationRecord
   end
 end
 
-class Audio < Annotation
+class Audio < Card
   validates :url, presence: true
 
   def default_display_title
@@ -34,30 +34,30 @@ class Audio < Annotation
   end
 end
 
-class Song < Annotation
+class Song < Card
   validates :url, presence: true
 end
 
-class Video < Annotation
+class Video < Card
   validates :url, presence: true
 end
 
-class Picture < Annotation
+class Picture < Card
   validates :url, presence: true
 end
 
-class Quote < Annotation
+class Quote < Card
   validates :quote, presence: true
 end
 
-class Passage < Annotation
+class Passage < Card
   validates :quote, presence: true
 end
 
-class Joke < Annotation
+class Joke < Card
   validates :quote, presence: true
 end
 
-class Story < Annotation
+class Story < Card
   validates :quote, presence: true
 end

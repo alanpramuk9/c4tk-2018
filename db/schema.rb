@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180210193041) do
+ActiveRecord::Schema.define(version: 20180210223518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "annotations", force: :cascade do |t|
+  create_table "cards", force: :cascade do |t|
     t.string "type"
     t.bigint "user_id"
     t.string "title"
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20180210193041) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["type"], name: "index_annotations_on_type"
-    t.index ["user_id"], name: "index_annotations_on_user_id"
+    t.index ["type"], name: "index_cards_on_type"
+    t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
   create_table "characters", force: :cascade do |t|
@@ -41,14 +41,15 @@ ActiveRecord::Schema.define(version: 20180210193041) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "theological_themes", force: :cascade do |t|
+  create_table "tags", force: :cascade do |t|
     t.string "canonical_name"
     t.string "variant"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "type", default: "Topic", null: false
   end
 
-  create_table "topics", force: :cascade do |t|
+  create_table "theological_themes", force: :cascade do |t|
     t.string "canonical_name"
     t.string "variant"
     t.datetime "created_at", null: false

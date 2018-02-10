@@ -6,33 +6,38 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# rubocop:disable Metrics/LineLength
 # rubocop:disable Style/MutableConstant
 # rubocop:disable Style/TrailingCommaInLiteral
+# rubocop:disable Style/WordArray
+
+require "tag"
 
 TOPICS = [
-  ["Faith", []],
-  ["Hope", []],
-  ["Love", []],
-  ["Trust", []],
-  ["Marriage", []],
-  ["Family", []],
-  ["Suffering", []],
-  ["Patriotism", []],
-  ["Finance", []],
-  ["Christmas", []],
-  ["Easter", []],
-  ["Leadership", []],
-  ["Teamwork", []],
-  ["Missions", []],
-  ["Generosity", []],
-  ["Grace", []],
-  ["Palm Sunday", []],
-  ["Good Friday", []],
-  ["Persecution", []],
-  ["Prayer", []],
-  ["Worship", []],
-  ["Obedience", []],
+  ["Faith", ["Belief", "Trust", "Confidence"]],
+  ["Hope", ["Aspiration", "Desire", "Wish", "Expectation", "Ambition", "Aim", "Goal", "Plan"]],
+  ["Love", ["Affection", "Fondness", "Tenderness", "Warmth", "Intimacy", "Attachment", "Endearment"]],
+  ["Trust", ["Confidence", "Belief", "Faith", "Certainty", "Assurance", "Conviction", "Credence; Reliance", "Loyalty"]],
+  ["Marriage", ["Wedding", "Nuptials", "Union"]],
+  ["Family", ["Relations", "Kin", "Kindred", "Near And Dear", "Dear Ones"]],
+  ["Suffering", ["Hurt", "Ache", "Pain", "Affliction", "Disease", "Hardship"]],
+  ["Patriotism", ["Nationalism", "Loyalty"]],
+  ["Finance", ["Financial Affairs", "Money Matters", "Fiscal Matters", "Economics", "Money Management", "Commerce", "Business", "Investment"]],
+  ["Christmas", ["Nativity", "Christ Birth", "Virgin Birth", "Xmas", "Advent"]],
+  ["Easter", ["Resurrection", "Rebirth", "Crucifixion", "Cross"]],
+  ["Leadership", ["Guidance", "Direction", "Control", "Management", "Superintendence", "Supervision; Organization", "Governance"]],
+  ["Teamwork", ["Partnership", "Synergy", "Collaboration", "Fellowship", "Working Together"]],
+  ["Missions", ["Commission", "Missionary", "Evangelization", "Spread The Word"]],
+  ["Generosity", ["Giving", "Charity", "Offering", "Philanthropy", "Kindness", "Sacrifice"]],
+  ["Grace", ["Favor", "Unmerited Favor", "Approval"]],
+  ["Palm Sunday", ["Passion Week"]],
+  ["Good Friday", ["Passion", "Crucifixion", "Cross", "Christ Death"]],
+  ["Persecution", ["Oppression", "Victimization", "Mistreatment", "Abuse", "Discrimination", "Tyranny"]],
+  ["Prayer", ["Intercession", "Invocation", "Quiet Time", "Talking To God"]],
+  ["Worship", ["Reverence", "Veneration", "Adoration", "Glorification", "Glory", "Exaltation"]],
+  ["Obedience", ["Compliance", "Acquiescence", "Tractability", "Dutifulness", "Duty", "Deference", "Submissiveness", "Submission", "Conformity", "Docility", "Subservience", "Obsequiousness", "Servility"]]
 ]
+
 TOPICS.each do |canonical_name, variants|
   Topic.find_or_create_by(canonical_name: canonical_name, variant: canonical_name)
   variants.each do |variant|
@@ -157,5 +162,7 @@ BIBLE_CHARACTERS.each do |canonical_name, variants|
   end
 end
 
+# rubocop:enable Style/WordArray
 # rubocop:enable Style/TrailingCommaInLiteral
 # rubocop:enable Style/MutableConstant
+# rubocop:enable Metrics/LineLength

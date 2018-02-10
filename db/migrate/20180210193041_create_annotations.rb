@@ -1,6 +1,6 @@
 class CreateAnnotations < ActiveRecord::Migration[5.1]
   def change
-    create_table :annotations do |t|
+    create_table :cards do |t|
       t.string :type, index: true
       t.references :user
 

@@ -1,16 +1,16 @@
-<% title "Add an Annotation" %>
+<% title "Add a Card" %>
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-md 8">
       <div class="container">
         <div class="row">
           <div class="col-sm">
-            <h3>Add an Annotation</h3>
+            <h3>Add a Card</h3>
           </div>
         </div>
         <div class="row">
           <div class="col-sm">
-            <%= form_for(annotation, as: :annotation, url: annotation.persisted? ? annotation_path(annotation) : annotations_path) do |form| %>
+            <%= form_for(card, as: :card, url: card.persisted? ? card_path(card) : cards_path) do |form| %>
               <%= form.hidden_field(:type) %>
               <%= form.hidden_field(:user_id) %>
               <%= render partial: "shared/form/text_field", locals: {form: form, attribute: :title} %>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-sm-8"></div>
                 <div class="col-sm-2 text-right">
-                  <%= form.submit(annotation.persisted? ? "Update" : "Add", class: "btn btn-primary") %>
+                  <%= form.submit(card.persisted? ? "Update" : "Add", class: "btn btn-primary") %>
                 </div>
               </div>
             <% end %>
