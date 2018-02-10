@@ -1,0 +1,42 @@
+<%# Search Bar %>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container search">
+    <div class="search-hero">
+      <i class="fa fa-search"></i>
+      <h1 class="search-header">Start Your Search: </h1>
+    </div>
+
+    <div class="row">
+      <div class="col-3">
+        <h5>Theme</h5>
+        <input type="text" onfocus="this.value=''" class="form-control" placeholder="Theme">
+      </div>
+      <div class="col-3">
+        <h5>Topic</h5>
+        <input type="text" class="form-control" placeholder="Topic">
+      </div>
+      <div class="col-3">
+        <h5>Character</h5>
+        <input type="text" class="form-control" placeholder="Character"></div>
+      <div class="col-3">
+        <h5>Scripture</h5>
+        <input type="text" class="form-control" placeholder="Scripture">
+      </div>
+    </div>
+    <button class="button search-button">Submit</button>
+  </div>
+</div>
+
+<%# Description %>
+<div class="container ">
+  <h5 style="text-align:center;">Heading</h5>
+  <p id="headinginfo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dictum, risus sed porttitor aliquet, lacus metus auctor libero, in eleifend mi magna pharetra dolor. Nunc tristique sodales libero eu feugiat. Vestibulum risus quam, molestie sit amet condimentum pretium, vulputate non eros. Sed commodo ac felis a semper. Sed ultrices est orci, at mollis leo eleifend sit amet. Duis interdum hendrerit magna ut faucibus. Pellentesque eleifend mauris id cursus pretium.</p>
+  <div id="okay">
+    <div id="image">
+      <img src="http://via.placeholder.com/550x250">
+    </div>
+    <div id="signup">
+      <%= link_to("Sign Up", sign_up_path, class: "btn btn-primary btn-lg") %>
+    </div>
+  </div>
+</div>

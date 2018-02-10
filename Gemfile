@@ -9,11 +9,14 @@ end
 # Use ActiveModel has_secure_password
 gem "bcrypt", "~> 3.1.7"
 
+# Use Bootstrap for UI Framework
+gem "bootstrap", "~> 4.0"
+
 # Use FontAwesome icon set
 gem "font-awesome-rails"
 
-# Use Foundation for a CSS Framework
-gem "foundation-rails", "~> 6.0"
+# Use jquery
+gem "jquery-rails"
 
 # Use naught for NullObject pattern
 gem "naught"

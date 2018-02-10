@@ -1,0 +1,36 @@
+<% title "Sign In" %>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md 8">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <h3>Sign In</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <p>Don't have an account yet? <%= link_to "Sign Up", sign_up_path %> now.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <%= form_for(user, as: :session, url: sessions_path) do |form| %>
+              <%= render partial: "shared/form/text_field", locals: {form: form, attribute: :email} %>
+              <%= render partial: "shared/form/password_field", locals: {form: form, attribute: :password} %>
+              <div class="form-group row">
+                <div class="col-sm-2">
+                  <%= link_to("Cancel", root_path, class: "btn btn-secondary") %>
+                </div>
+                <div class="col-sm-8"></div>
+                <div class="col-sm-2 text-right">
+                  <%= form.submit("Sign In", class: "btn btn-primary") %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
