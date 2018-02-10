@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: c4tk_production
-  username: c4tk
-  password: <%= ENV['C4TK_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
