@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   resources :accounts, only: [:create]
   resources :sessions, only: [:create]
+  resources :topics, only: [:index]
+  resources :theological_themes, only: [:index]
+  resources :characters, only: [:index]
 
   get "/sign-up" => "accounts#new", as: :sign_up
   get "/me" => "accounts#profile", as: :profile

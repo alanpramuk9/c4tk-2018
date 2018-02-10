@@ -35,6 +35,10 @@ Guest = Naught.build do |config|
     nil
   end
 
+  def errors
+    @errors ||= ActiveModel::Errors.new(self)
+  end
+
   def name
     "Honored Guest"
   end
