@@ -2,10 +2,13 @@ Rails.application.routes.draw do
   root "pages#home"
 
   resources :accounts, only: [:create]
-  resources :sessions, only: [:create]
-  resources :topics, only: [:index]
-  resources :theological_themes, only: [:index]
+  resources :annotations, except: [:index, :new]
   resources :characters, only: [:index]
+  resources :sessions, only: [:create]
+  resources :theological_themes, only: [:index]
+  resources :topics, only: [:index]
+
+  get "/annotations/new/:type" => "annotations#new", as: :new_annotation
 
   get "/sign-up" => "accounts#new", as: :sign_up
   get "/me" => "accounts#profile", as: :profile

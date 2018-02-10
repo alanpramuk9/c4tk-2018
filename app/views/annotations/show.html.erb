@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <h3><%= annotation.title %></h3>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-sm">
+      <p class="mb-0"><%= annotation.description %></p>
+      <cite>Added <%= annotation.created_at.to_formatted_s(:standard) %></cite>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <% if annotation.private? %>
+        <span class="badge badge-secondary">Private</span>
+      <% else %>
+        <span class="badge badge-success">Public</span>
+      <% end %>
+    </div>
+    <div class="col-sm text-right">
+      <%= link_to("Edit", edit_annotation_path(annotation), class: "btn btn-secondary") %>
+    </div>
+  </div>
+  <hr>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2 text-right">
+        <%= image_tag("#{annotation.type_identifier}.svg", class: "annotation-icon") %>
+      </div>
+      <div class="col-sm-10">
+        <% if annotation.quote.present? %>
+          <blockquote class="blockquote">
+            <p class="mb-0"><%= annotation.quote %></p>
+            <footer class="blockquote-footer text-right">
+              <% if annotation.author.present? %>
+                From <%= annotation.author %> in
+              <% end %>
+              <cite title="Source">
+                <% if annotation.url.present? %>
+                  <%= link_to annotation.source, annotation.url %>
+                <% else %>
+                  <%= annotation.source %>
+                <% end %>
+              </cite>
+            </footer>
+          </blockquote>
+        <% elsif annotation.url.present? %>
+          <dl>
+            <dt>URL</dt>
+            <dd><%= annotation.url %></dd>
+            <% if annotation.author.present? %>
+              <dt>Author</dt>
+              <dd><%= annotation.author %></dd>
+            <% end %>
+            <dt>Source</dt>
+            <dd><%= annotation.source %></dd>
+          </dl>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
 
 protected
 
+  def ensure_logged_in
+    redirect_to sign_in_path if current_user.guest?
+  end
+
   def current_user
     Users[session[:user_id]].tap { |user| p user }
   end

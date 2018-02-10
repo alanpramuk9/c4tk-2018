@@ -1,6 +1,9 @@
 @import "bootstrap";
 @import "font-awesome";
 
+$color-dark-blue: #001F3F;
+$color-light-blue: lightblue;
+
 html {
   height: 100%;
 }
@@ -21,8 +24,8 @@ body {
   }
 
   input.form-control {
-    text-align:center;
-    background-color:lightblue;
+    text-align: center;
+    background-color: $color-light-blue;
   }
 }
 
@@ -31,8 +34,8 @@ body {
   justify-content: center;
 
   i.fa.fa-search {
-    font-size:1.5em;
-    margin-right:20px;
+    font-size: 1.5em;
+    margin-right: 20px;
     margin-top: 12px;
   }
 
@@ -64,10 +67,20 @@ button:hover,
   align-items: center;
 }
 
-footer {
+.page-footer {
   color: white;
-  background-color: #001F3F;
+  background-color: $color-dark-blue;
   padding-top: 1em;
   margin-top:30px;
   min-height:200px;
+}
+
+.annotation-icon {
+  background-color: $color-light-blue;
+  width: 5em;
+  height: auto;
+
+  &-small {
+    width: 2em;
+  }
 }

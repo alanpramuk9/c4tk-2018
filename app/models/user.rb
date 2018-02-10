@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
 
+  has_many :annotations
+
   validates :email, uniqueness: { case_sensitive: false }, presence: true
 
   def self.guest
@@ -9,6 +11,10 @@ class User < ApplicationRecord
 
   def guest?
     !persisted?
+  end
+
+  def build_annotation_of_type(type)
+    Annotation.as_type(type).tap { |annotation| annotation.user_id = id }
   end
 end
 

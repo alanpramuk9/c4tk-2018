@@ -1,0 +1,9 @@
+<div class="form-group row">
+  <%= form.label(attribute, class: "col-sm-3 col-form-label") %>
+  <div class="col-sm-9">
+    <span>
+      <%= form.check_box(attribute, class: "form-control") %>
+    </span>
+    <%= render partial: "shared/form/errors", locals: { form: form, attribute: attribute } %>
+  </div>
+</div>

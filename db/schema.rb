@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180210162128) do
+ActiveRecord::Schema.define(version: 20180210193041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "annotations", force: :cascade do |t|
+    t.string "type"
+    t.bigint "user_id"
+    t.string "title"
+    t.text "description"
+    t.boolean "private"
+    t.boolean "censored"
+    t.string "review_status"
+    t.text "quote"
+    t.text "url"
+    t.string "source"
+    t.string "author"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_annotations_on_type"
+    t.index ["user_id"], name: "index_annotations_on_user_id"
+  end
 
   create_table "characters", force: :cascade do |t|
     t.string "canonical_name"
