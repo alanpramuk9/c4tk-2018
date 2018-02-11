@@ -2,12 +2,12 @@
 <div class="container">
   <div class="row align-items-start">
     <div class="col-5">
-      <div class="middle">
-        <div id="name"><h3>Characters</h3></div>
-        <div id="filter"><%= image_tag("icons/filter.svg")%></div>
+      <div class="container">
+        <%= render partial: "search/form" %>
       </div>
     </div>
     <div class="col-6 align-self-center">
+      <h5>Filter by Idea Type</h5>
       <div id="tags">
         <% Card::TYPES.each do |card_type| %>
           <% if all_results.of_type(card_type).any? %>
