@@ -1,5 +1,5 @@
 class Card < ApplicationRecord
-  TYPES = %w(Song Audio Video Picture Quote Passage Joke Story)
+  TYPES = %w(Song Audio Video Picture Quote Passage Joke Story).sort
 
   belongs_to :user
   has_many :card_tags
