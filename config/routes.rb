@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
   resources :topics, only: [:index]
 
+  post "/idea_boards/:idea_board_id/cards/:card_id" => "idea_cards#create", as: :add_idea_card
+  delete "/idea_boards/:idea_board_id/cards/:card_id" => "idea_cards#destroy", as: :remove_idea_card
+
   get "/cards/new/:type" => "cards#new", as: :new_card
   get "/cards/:card_id/tags/:type" => "card_tags#index", as: :list_card_tags
   post "/cards/:card_id/tags/:type" => "card_tags#create", as: :add_card_tag

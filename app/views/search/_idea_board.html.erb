@@ -16,7 +16,17 @@
               <p><%= card.url %></p>
             </div>
             <div class="rightcontent">
-              <%= image_tag("icons/check_yes.svg")%>
+              <%=
+                link_to(
+                    remove_idea_card_path(
+                        idea_board_id: current_idea_board.id,
+                        card_id: card.id
+                    ),
+                    method: :delete
+                ) do
+              %>
+                <%= image_tag("icons/check_yes.svg")%>
+              <% end %>
               <%= image_tag("icons/more_info.svg")%>
             </div>
           </div>

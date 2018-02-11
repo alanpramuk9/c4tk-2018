@@ -11,6 +11,14 @@ class IdeaBoard < ApplicationRecord
     cards.include?(card)
   end
 
+  def add_card(card)
+    card_ideas.find_or_create_by(card: card)
+  end
+
+  def remove_card(card)
+    card_ideas.where(card: card).delete_all
+  end
+
   def empty?
     cards.none?
   end

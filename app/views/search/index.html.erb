@@ -39,11 +39,27 @@
           </div>
           <div class="rightcontent">
             <% if current_user.latest_idea_board.card?(card) %>
-              <%= link_to("foo") do%>
+              <%=
+                link_to(
+                  remove_idea_card_path(
+                    idea_board_id: current_idea_board.id,
+                    card_id: card.id
+                  ),
+                  method: :delete
+                ) do
+              %>
                 <%= image_tag("icons/check_yes.svg")%>
               <% end %>
             <% else %>
-              <%= link_to("foo") do%>
+              <%=
+                link_to(
+                    add_idea_card_path(
+                        idea_board_id: current_idea_board.id,
+                        card_id: card.id
+                    ),
+                    method: :post
+                ) do
+              %>
                 <%= image_tag("icons/unchecked.svg")%>
               <% end %>
             <% end %>
