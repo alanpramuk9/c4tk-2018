@@ -236,6 +236,7 @@ a.buttontag, a.buttontag.buttontag-inactive:hover {
   border-radius:6px;
   border-color: #e3b94b;
   margin:1px 3px;
+  text-decoration: none;
 }
 
 a.buttontag:hover, a.buttontag-inactive {
@@ -244,6 +245,7 @@ a.buttontag:hover, a.buttontag-inactive {
   border-radius:6px;
   color: #e3b94b;
   opacity:.9;
+  text-decoration: none;
 }
 
 a.buttontag-disabled, a.buttontag.buttontag-disabled:hover {
@@ -256,6 +258,7 @@ a.buttontag-disabled, a.buttontag.buttontag-disabled:hover {
   border-color: #e3b94b;
   margin:1px 3px;
   opacity: .4;
+  text-decoration: none;
 }
 
 #tags {
