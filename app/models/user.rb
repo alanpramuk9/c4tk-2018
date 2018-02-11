@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :cards
+  has_many :card_tags, through: :cards
+  has_many :tags, through: :card_tags
 
   validates :email, uniqueness: { case_sensitive: false }, presence: true
 

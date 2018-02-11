@@ -11,7 +11,7 @@ class CardsController < ApplicationController
     if card.save
       redirect_to card_path(card)
     else
-      render new
+      render :new
     end
   end
 
