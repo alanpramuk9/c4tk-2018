@@ -2,7 +2,7 @@ class CardsController < ApplicationController
   before_action :ensure_logged_in
   before_action :ensure_valid_card_type
 
-  helper_method :card
+  helper_method :card, :card_type
 
   def new; end
 
