@@ -14,10 +14,10 @@
 require "tag"
 
 TOPICS = [
-  ["Faith", ["Belief", "Trust", "Confidence"]],
+  ["Faith", ["Belief", "Confidence"]],
   ["Hope", ["Aspiration", "Desire", "Wish", "Expectation", "Ambition", "Aim", "Goal", "Plan"]],
   ["Love", ["Affection", "Fondness", "Tenderness", "Warmth", "Intimacy", "Attachment", "Endearment"]],
-  ["Trust", ["Confidence", "Belief", "Faith", "Certainty", "Assurance", "Conviction", "Credence; Reliance", "Loyalty"]],
+  ["Trust", ["Confidence", "Certainty", "Assurance", "Conviction", "Credence", "Reliance", "Loyalty"]],
   ["Marriage", ["Wedding", "Nuptials", "Union"]],
   ["Family", ["Relations", "Kin", "Kindred", "Near And Dear", "Dear Ones"]],
   ["Suffering", ["Hurt", "Ache", "Pain", "Affliction", "Disease", "Hardship"]],
@@ -25,7 +25,7 @@ TOPICS = [
   ["Finance", ["Financial Affairs", "Money Matters", "Fiscal Matters", "Economics", "Money Management", "Commerce", "Business", "Investment"]],
   ["Christmas", ["Nativity", "Christ Birth", "Virgin Birth", "Xmas", "Advent"]],
   ["Easter", ["Resurrection", "Rebirth", "Crucifixion", "Cross"]],
-  ["Leadership", ["Guidance", "Direction", "Control", "Management", "Superintendence", "Supervision; Organization", "Governance"]],
+  ["Leadership", ["Guidance", "Direction", "Control", "Management", "Superintendence", "Supervision", "Organization", "Governance"]],
   ["Teamwork", ["Partnership", "Synergy", "Collaboration", "Fellowship", "Working Together"]],
   ["Missions", ["Commission", "Missionary", "Evangelization", "Spread The Word"]],
   ["Generosity", ["Giving", "Charity", "Offering", "Philanthropy", "Kindness", "Sacrifice"]],
@@ -38,12 +38,14 @@ TOPICS = [
   ["Obedience", ["Compliance", "Acquiescence", "Tractability", "Dutifulness", "Duty", "Deference", "Submissiveness", "Submission", "Conformity", "Docility", "Subservience", "Obsequiousness", "Servility"]]
 ]
 
+all_good_topics = []
 TOPICS.each do |canonical_name, variants|
-  Topic.find_or_create_by(canonical_name: canonical_name, variant: canonical_name)
+  all_good_topics << Topic.find_or_create_by(canonical_name: canonical_name, variant: canonical_name)
   variants.each do |variant|
-    Topic.find_or_create_by(canonical_name: canonical_name, variant: variant)
+    all_good_topics << Topic.find_or_create_by(canonical_name: canonical_name, variant: variant)
   end
 end
+Topic.where.not(id: all_good_topics).delete_all if Rails.env.production?
 
 THEOLOGICAL_THEMES = [
   ["Salvation", []],

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get "/cards/new/:type" => "cards#new", as: :new_card
   get "/cards/:card_id/tags/:type" => "card_tags#index", as: :list_card_tags
-  post "/cards/:card_id/tags/:type" => "cards_tags#create", as: :add_card_tag
+  post "/cards/:card_id/tags/:type" => "card_tags#create", as: :add_card_tag
   delete "/cards/:card_id/tags/:type" => "card_tags#destroy", as: :remove_card_tag
 
   get "/sign-up" => "accounts#new", as: :sign_up

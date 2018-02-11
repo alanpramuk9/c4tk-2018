@@ -3,11 +3,13 @@ class Tag < ApplicationRecord
   has_many :cards, through: :card_tags
 
   scope :of_type, ->(type) { where(type: type) }
+  scope :with_canonical_name, ->(canonical_name) { where(canonical_name: canonical_name, variant: canonical_name) }
+  scope :canonical, -> { where("canonical_name = variant") }
 
   default_scope { order(:variant) }
 
-  def self.select_options
-    all.map { |tag| [tag.variant, tag.canonical_name] }
+  def self.select_options(tags = all)
+    tags.map { |tag| [tag.variant, tag.canonical_name] }
   end
 
   def as_json(**options)

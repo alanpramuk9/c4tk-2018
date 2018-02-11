@@ -6,26 +6,20 @@ class CardTagsController < ApplicationController
   end
 
   def create
-    card.add_tag(
-      Tag.find_by(
-        type: tag_params[:type],
-        canonical_name: params[:name]
-      )
-    )
+    card.add_tag(canonical_tag)
     redirect_to list_card_tags_path
   end
 
   def destroy
-    card.remove_tag(
-      Tag.find_by(
-        type: tag_params[:type],
-        canonical_name: params[:name]
-      )
-    )
+    card.remove_tag(canonical_tag)
     redirect_to list_card_tags_path
   end
 
 protected
+
+  def canonical_tag
+    Tag.of_type(tag_params[:type]).with_canonical_name(tag_params[:canonical_name]).first
+  end
 
   def tag_params
     params.require(:tag).permit(:canonical_name, :type, :variant)

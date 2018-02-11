@@ -6,9 +6,10 @@
   </div>
   <div class="row">
     <div class="col-sm">
-      <%= form_for(Topic.new, as: :card_tag) do |form| %>
+      <%= form_for(Topic.new, as: :tag, url: add_card_tag_path) do |form| %>
         <%= form.hidden_field(:type) %>
-        <%= form.select(:canonical_name, Topic.select_options) %>
+        <%= form.select(:canonical_name, Topic.select_options(Topic.canonical.where.not(id: card.tags))) %>
+        <%= form.submit("Add Tag") %>
       <% end %>
     </div>
   </div>
@@ -17,9 +18,11 @@
       <div class="col-sm">
         <div class="alert alert-secondary">
           <%= tag.canonical_name %>
-          <button type="button" class="close" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <%= form_for(tag, as: :tag, url: remove_card_tag_path(type: tag.type, card_id: card.id), method: :delete, class: "close") do |form| %>
+            <%= form.hidden_field(:type) %>
+            <%= form.hidden_field(:canonical_name) %>
+            <%= form.submit "&times;".html_safe %>
+          <% end %>
         </div>
       </div>
     </div>
