@@ -6,4 +6,12 @@ class IdeaBoard < ApplicationRecord
 
   has_many :tag_ideas
   has_many :tags, through: :tag_ideas
+
+  def card?(card)
+    cards.include?(card)
+  end
+
+  def empty?
+    cards.none?
+  end
 end

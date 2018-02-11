@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :cards
   has_many :card_tags, through: :cards
   has_many :tags, through: :card_tags
+  has_many :idea_boards
 
   validates :email, uniqueness: { case_sensitive: false }, presence: true
 
@@ -17,6 +18,19 @@ class User < ApplicationRecord
 
   def build_card_of_type(type)
     Card.as_type(type).tap { |card| card.user_id = id }
+  end
+
+  def latest_idea_board
+    idea_boards.order("updated_at DESC").first || create_default_idea_board
+  end
+
+protected
+
+  def create_default_idea_board
+    idea_boards.create(
+      title: "My First Idea Board",
+      description: "Search for topics to add ideas to the board."
+    )
   end
 end
 

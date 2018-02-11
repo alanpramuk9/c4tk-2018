@@ -31,12 +31,12 @@ protected
   end
 
   def variant_tag
-    @variant_tage ||= Tag.of_type(params[:tag_type]).with_variant(params[:tag]).first
+    @variant_tag ||= Tag.of_type(params[:tag_type]).with_variant(params[:tag]).first
   end
 
   def ensure_valid_params
     return redirect_to root_path unless params.key?(:tag_type)
-    return redirect_to root_path unless params.key?(:tag)
+    redirect_to root_path unless params.key?(:tag)
   end
 
   def search_params

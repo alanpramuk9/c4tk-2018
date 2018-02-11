@@ -38,7 +38,16 @@
             <p><%= card.url %></p>
           </div>
           <div class="rightcontent">
-            <%= image_tag("icons/check_yes.svg")%>
+            <% if current_user.latest_idea_board.card?(card) %>
+              <%= link_to("foo") do%>
+                <%= image_tag("icons/check_yes.svg")%>
+              <% end %>
+            <% else %>
+              <%= link_to("foo") do%>
+                <%= image_tag("icons/unchecked.svg")%>
+              <% end %>
+            <% end %>
+
             <%= image_tag("icons/more_info.svg")%>
           </div>
         </div>

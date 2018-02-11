@@ -1,21 +1,27 @@
 <div class="right" id="right">
   <div class="ideaboard">
     <h2>Idea Board:</h2>
-    <h5>Life and Times of Moses</h5>
-    <!--Results container -->
-    <div class="result">
-      <div class="flexible">
-        <%= image_tag("icons/quote.svg", class: "filetype")%>
-        <div class="content">
-          <p>lorem impsum asdlf alskdfkljasfd </p>
-          <p>asdfasdf</p>
-        </div>
-        <div class="rightcontent">
-          <%= image_tag("icons/check_yes.svg")%>
-          <%= image_tag("icons/more_info.svg")%>
-
-        </div>
+    <h5><%= current_idea_board.title %></h5>
+    <% if current_idea_board.empty? %>
+      <div class="alert alert-secondary">
+        <p>Add cards to this board by clicking the gray circle in the top right corner.</p>
       </div>
-    </div>
+    <% else %>
+      <% current_idea_board.cards.each do |card| %>
+        <div class="result">
+          <div class="flexible">
+            <%= image_tag("icons/quote.svg", class: "filetype")%>
+            <div class="content">
+              <p><%= card.quote %></p>
+              <p><%= card.url %></p>
+            </div>
+            <div class="rightcontent">
+              <%= image_tag("icons/check_yes.svg")%>
+              <%= image_tag("icons/more_info.svg")%>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
