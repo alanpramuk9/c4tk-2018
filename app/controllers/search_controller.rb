@@ -23,7 +23,7 @@ protected
   end
 
   def all_results
-    canonical_tag.cards
+    canonical_tag.cards.where.not(id: current_idea_board.cards)
   end
 
   def canonical_tag
