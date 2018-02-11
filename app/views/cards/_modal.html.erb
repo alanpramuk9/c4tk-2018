@@ -32,9 +32,9 @@
           <p style="float:right; opacity:.8;">
             <% if card.source.present? %>
               <% if card.url.present? %>
-                <%= card.source %>
-              <% else %>
                 <%= external_link_to card.source, card.url %>
+              <% else %>
+                <%= card.source %>
               <% end %>
             <% else %>
               <%= external_link_to card.url %>
