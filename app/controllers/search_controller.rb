@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
   before_action :ensure_valid_params, only: :index
 
-  helper_method :all_results, :results, :card_filtered_search_path
+  helper_method :all_results, :results, :canonical_tag, :variant_tag, :card_filtered_search_path
 
   def index; end
 
