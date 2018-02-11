@@ -1,23 +1,26 @@
-<div class="results" style="text-align:center"><h2>Results: <%= params[:tag] %></h2></div>
-<div class="container">
+<br>
+<div class="results" style="text-align:center">
+  <h2>Results: <%= params[:tag] %></h2>
+</div>
+<div class="container mb-4">
   <div class="row align-items-start">
     <div class="col-5">
       <div class="container">
         <%= render partial: "search/form" %>
       </div>
     </div>
-    <div class="col-6 align-self-center">
+    <div class="col-6">
       <h5>Filter by Idea Type</h5>
       <div id="tags">
         <% Card::TYPES.each do |card_type| %>
           <% if all_results.of_type(card_type).any? %>
             <% if card_type == params[:card_type] %>
-              <%= link_to(card_type, card_filtered_search_path(nil), class: "btn btn-primary") %>
+              <%= link_to(card_type, card_filtered_search_path(nil), class: "buttontag") %>
             <% else %>
-              <%= link_to(card_type, card_filtered_search_path(card_type), class: "btn btn-secondary") %>
+              <%= link_to(card_type, card_filtered_search_path(card_type), class: "buttontag buttontag-inactive") %>
             <% end %>
           <% else %>
-            <%= link_to(card_type, "#", disabled: true, class: "btn") %>
+            <%= link_to(card_type, "#", disabled: true, class: "buttontag buttontag-disabled") %>
           <% end %>
 
         <% end %>
@@ -25,7 +28,6 @@
     </div>
   </div>
 </div>
-
 
 <div class="main">
   <div class="left" id="left">

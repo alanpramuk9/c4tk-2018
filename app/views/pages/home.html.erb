@@ -1,12 +1,25 @@
-<%# Search Bar %>
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm search-hero">
-        <i class="fa fa-search"></i>
-        <h1 class="search-header">Start Your Search: </h1>
-      </div>
-    </div>
-    <%= render partial: "search/form" %>
+<div class="toppage">
+  <div class="background">
+    <%= image_tag "hero_background.jpg", alt: "Notebook" %>
   </div>
+  <div class="backgroundtext">
+    <!--<div class="search"><i class="fa fa-search"></i><h1 id="search">Start Your Search: </h1></div>-->
+    <div class="search"><h1 id="search">Start Your Search: </h1></div>
+    <div class="categories">
+      <%= render partial: "search/form" %>
+      <!--<button type="button" class="btn btn-warning">Warning</button>-->
+    </div>
+  </div>
+</div>
+
+<div class="container ">
+  <p style="font-size:1.5em" id="headinginfo">TakeNote helps your library of Bible notes for preparing sermons while building a community library to equip others and enhance the kingdom of God.</p>
+  <div id="okay">
+    <% if current_user.guest? %>
+      <div class="buttonbottom">
+        <button type="button">Sign Up</button>
+      </div>
+    <% end %>
+  </div>
+
 </div>

@@ -1,18 +1,19 @@
-<div class="row">
-  <div class="col-sm">
+<% results_page = params[:tag].present? %>
+<div class="row justify-content-center">
+  <div class="col-sm<%= results_page ? '' : '-4' %>">
     <h5>Topic</h5>
     <form action="<%= search_path %>" method="get">
       <%= hidden_field_tag(:tag_type, "Topic") %>
-      <%= select_tag(:tag, options_for_select(Topic.select_options)) %>
-      <input type="submit" value="Search by  Topic">
+      <%= select_tag(:tag, options_for_select(Topic.select_options), class: "form-control #{results_page ? 'results' : 'main'}") %>
+      <div class="buttonmain"><button style="display: block; margin: 0 auto;" >Search by Topic</button></div>
     </form>
   </div>
-  <div class="col-sm">
+  <div class="col-sm<%= results_page ? '' : '-4' %>">
     <h5>Character</h5>
     <form action="<%= search_path %>" method="get">
       <%= hidden_field_tag(:tag_type, "Character") %>
-      <%= select_tag(:tag, options_for_select(Character.select_options)) %>
-      <input type="submit" value="Search by Character">
+      <%= select_tag(:tag, options_for_select(Character.select_options), class: "form-control #{results_page ? 'results' : 'main'}") %>
+      <div class="buttonmain"><button style="display: block; margin: 0 auto;" >Search by Character</button></div>
     </form>
   </div>
 </div>
