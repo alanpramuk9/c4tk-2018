@@ -1,27 +1,29 @@
 <%# Search Bar %>
 <div class="jumbotron jumbotron-fluid">
-  <div class="container search">
-    <div class="search-hero">
-      <i class="fa fa-search"></i>
-      <h1 class="search-header">Start Your Search: </h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm search-hero">
+        <i class="fa fa-search"></i>
+        <h1 class="search-header">Start Your Search: </h1>
+      </div>
     </div>
-
     <div class="row">
       <div class="col-sm">
         <h5>Topic</h5>
-        <%= form_tag() %>
-        <input type="text" class="form-control" placeholder="Topic">
+        <form action="<%= search_path %>" method="get">
+          <%= hidden_field_tag(:tag_type, "Topic") %>
+          <%= select_tag(:tag, options_for_select(Topic.select_options)) %>
+          <input type="submit" value="Search by  Topic">
+        </form>
       </div>
       <div class="col-sm">
         <h5>Character</h5>
-        <input type="text" class="form-control" placeholder="Character"></div>
-      <%#
-      <div class="col-sm">
-        <h5>Scripture</h5>
-        <input type="text" class="form-control" placeholder="Scripture">
+        <form action="<%= search_path %>" method="get">
+          <%= hidden_field_tag(:tag_type, "Character") %>
+          <%= select_tag(:tag, options_for_select(Character.select_options)) %>
+          <input type="submit" value="Search by Character">
+        </form>
       </div>
-      %>
     </div>
-    <button class="button search-button">Submit</button>
   </div>
 </div>

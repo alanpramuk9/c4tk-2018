@@ -1,10 +1,13 @@
 class Card < ApplicationRecord
+  TYPES = %w(Song Audio Video Picture Quote Passage Joke Story)
+
   belongs_to :user
   has_many :card_tags
   has_many :tags, through: :card_tags
 
+  scope :of_type, ->(type) { where(type: type) }
+
   validates :user, presence: true
-  validates :source, presence: true
 
   def self.as_type(type)
     type ||= "quote"
@@ -57,10 +60,13 @@ class Picture < Card
 end
 
 class Quote < Card
+  validates :author, presence: true
   validates :quote, presence: true
 end
 
 class Passage < Card
+  validates :author, presence: true
+  validates :source, presence: true
   validates :quote, presence: true
 end
 

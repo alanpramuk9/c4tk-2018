@@ -5,11 +5,13 @@
     <div class="col-5">
       <div class="middle">
         <div id="name"><h3>Characters</h3></div>
-        <div id="filter"><img src="icons/filter.svg"></div>
+        <div id="filter"><%= image_tag("icons/filter.svg")%></div>
       </div>
     </div>
     <div class="col-6 align-self-center">
       <div id="tags">
+        <% %w() %>
+        <%  %>
         <button type="button" class="btn btn-primary">Verse</button>
         <button type="button" class="btn btn-primary">Passage</button>
         <button type="button" class="btn btn-primary">Song</button>
@@ -28,102 +30,23 @@
 
 <div class="main">
   <div class="left" id="left">
-    <!--Results container -->
-    <div class="result">
-      <div class="flexible">
-        <img class="filetype" src="icons/audio.svg">
-        <div class="content">
-          <p>lorem impsum asdlf alskdfkljasfd </p>
-          <p>asdfasdf</p>
-        </div>
-        <div class="rightcontent">
-          <div><img src="icons/check_yes.svg"></div>
-          <div><img src="icons/more_info.svg"></div>
-
-        </div>
-      </div>
-    </div>
-
-    <!--Results container -->
-    <div class="result">
-      <div class="flexible">
-        <img class="filetype" src="icons/passage.svg">
-        <div class="content">
-          <p>lorem impsum asdlf alskdfkljasfd </p>
-          <p>asdfasdf</p>
-        </div>
-        <div class="rightcontent">
-          <div><img src="icons/check_yes.svg"></div>
-          <div><img src="icons/more_info.svg"></div>
-
-        </div>
-      </div>
-    </div>
-    <div class="result">
-      <div class="flexible">
-        <img class="filetype" src="icons/song.svg">
-        <div class="content">
-          <p>lorem impsum asdlf alskdfkljasfd </p>
-          <p>asdfasdf</p>
-        </div>
-        <div class="rightcontent">
-          <div><img src="icons/check_yes.svg"></div>
-          <div><img src="icons/more_info.svg"></div>
-
-        </div>
-      </div>
-    </div>
-    <div class="result">
-      <div class="flexible">
-        <img class="filetype" src="icons/passage.svg">
-        <div class="content">
-          <p>lorem impsum asdlf alskdfkljasfd </p>
-          <p>asdfasdf</p>
-        </div>
-        <div class="rightcontent">
-          <div><img src="icons/check_yes.svg"></div>
-          <div><img src="icons/more_info.svg"></div>
-
-        </div>
-      </div>
-    </div>
-
-  </div>
-  <div class="right" id="right">
-    <div class="ideaboard">
-      <h2>Idea Board:</h2>
-      <h5>Life and Times of Moses</h5>
-      <!--Results container -->
+    <% results.each do |card| %>
       <div class="result">
         <div class="flexible">
-          <img class="filetype" src="icons/quote.svg">
+          <%= image_tag("icons/#{card.type_identifier}.svg", class: "filetype")%>
           <div class="content">
-            <p>lorem impsum asdlf alskdfkljasfd </p>
-            <p>asdfasdf</p>
+            <p><%= card.quote %></p>
+            <p><%= card.url %></p>
           </div>
           <div class="rightcontent">
-            <div><img src="icons/check_yes.svg"></div>
-            <div><img src="icons/more_info.svg"></div>
+            <div><%= image_tag("icons/check_yes.svg")%></div>
+            <div><%= image_tag("icons/more_info.svg")%></div>
 
           </div>
         </div>
       </div>
-      <!--Results container -->
-      <div class="result">
-        <div class="flexible">
-          <img class="filetype" src="icons/joke.svg">
-          <div class="content">
-            <p>lorem impsum asdlf alskdfkljasfd </p>
-            <p>asdfasdf</p>
-          </div>
-          <div class="rightcontent">
-            <div><img src="icons/check_yes.svg"></div>
-            <div><img src="icons/more_info.svg"></div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <% end %>
   </div>
+
+  <%# render partial: "search/image_board" %>
 </div>
