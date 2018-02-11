@@ -29,7 +29,17 @@
           <p><%= card.source %></p>
         <% else %>
           <p style="font-size:1.2em"><%= card.quote %></p>
-          <p style="float:right; opacity:.8;">From Martin Luther King Jr in All Labor That Uplifts Humanity</p>
+          <p style="float:right; opacity:.8;">
+            <% if card.source.present? %>
+              <% if card.url.present? %>
+                <%= card.source %>
+              <% else %>
+                <%= external_link_to card.source, card.url %>
+              <% end %>
+            <% else %>
+              <%= external_link_to card.url %>
+            <% end %>
+          </p>
         <% end %>
       </div>
 

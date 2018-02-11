@@ -86,7 +86,7 @@
               <% end %>
               <cite title="Source">
                 <% if card.url.present? %>
-                  <%= link_to card.source, card.url %>
+                  <%= external_link_to card.source, card.url %>
                 <% else %>
                   <%= card.source %>
                 <% end %>
