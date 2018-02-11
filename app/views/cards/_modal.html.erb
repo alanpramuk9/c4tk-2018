@@ -22,11 +22,11 @@
         <% when Picture %>
           <%= image_tag card.url, class: "img-thumbnail", style: "max-width: 600px; max-height: 300px" %>
         <% when Audio %>
-          <% if card.source.present? %>
-            <%= card.source %>
-          <% else %>
-            <%= external_link_to card.url %>
-          <% end %>
+          <audio controls>
+            <source src="<%= card.url %>" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+          <p><%= card.source %></p>
         <% else %>
           <p style="font-size:1.2em"><%= card.quote %></p>
           <p style="float:right; opacity:.8;">From Martin Luther King Jr in All Labor That Uplifts Humanity</p>

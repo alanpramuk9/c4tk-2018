@@ -30,7 +30,54 @@
         <%= image_tag("icons/#{card.type_identifier}.svg", class: "card-icon") %>
       </div>
       <div class="col-sm-10">
-        <% if card.quote.present? %>
+        <% case card %>
+        <% when Video, Song %>
+          <% if youtube_url?(card.url) %>
+            <%= card_youtube_iframe(card) %>
+            <dl>
+              <% if card.author.present? %>
+                <dt>Author</dt>
+                <dd><%= card.author %></dd>
+              <% end %>
+              <dt>Source</dt>
+              <dd><%= card.source %></dd>
+            </dl>
+          <% else %>
+            <dl>
+              <dt>URL</dt>
+              <dd><%= card.url %></dd>
+              <% if card.author.present? %>
+                <dt>Author</dt>
+                <dd><%= card.author %></dd>
+              <% end %>
+              <dt>Source</dt>
+              <dd><%= card.source %></dd>
+            </dl>
+          <% end %>
+        <% when Audio %>
+          <audio controls>
+            <source src="<%= card.url %>" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+          <dl>
+            <% if card.author.present? %>
+              <dt>Author</dt>
+              <dd><%= card.author %></dd>
+            <% end %>
+            <dt>Source</dt>
+            <dd><%= card.source %></dd>
+          </dl>
+        <% when Picture %>
+          <%= image_tag card.url, class: "img-thumbnail", style: "max-width: 600px; max-height: 300px" %>
+          <dl>
+            <% if card.author.present? %>
+              <dt>Author</dt>
+              <dd><%= card.author %></dd>
+            <% end %>
+            <dt>Source</dt>
+            <dd><%= card.source %></dd>
+          </dl>
+        <% else %>
           <blockquote class="blockquote">
             <p class="mb-0"><%= card.quote %></p>
             <footer class="blockquote-footer text-right">
@@ -46,17 +93,6 @@
               </cite>
             </footer>
           </blockquote>
-        <% elsif card.url.present? %>
-          <dl>
-            <dt>URL</dt>
-            <dd><%= card.url %></dd>
-            <% if card.author.present? %>
-              <dt>Author</dt>
-              <dd><%= card.author %></dd>
-            <% end %>
-            <dt>Source</dt>
-            <dd><%= card.source %></dd>
-          </dl>
         <% end %>
       </div>
     </div>
