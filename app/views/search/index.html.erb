@@ -30,44 +30,7 @@
 <div class="main">
   <div class="left" id="left">
     <% results.each do |card| %>
-      <div class="result">
-        <div class="flexible">
-          <%= image_tag("icons/#{card.type_identifier}.svg", class: "filetype")%>
-          <div class="content">
-            <p><%= card.quote %></p>
-            <p><%= card.url %></p>
-          </div>
-          <div class="rightcontent">
-            <% if current_user.latest_idea_board.card?(card) %>
-              <%=
-                link_to(
-                  remove_idea_card_path(
-                    idea_board_id: current_idea_board.id,
-                    card_id: card.id
-                  ),
-                  method: :delete
-                ) do
-              %>
-                <%= image_tag("icons/check_yes.svg")%>
-              <% end %>
-            <% else %>
-              <%=
-                link_to(
-                    add_idea_card_path(
-                        idea_board_id: current_idea_board.id,
-                        card_id: card.id
-                    ),
-                    method: :post
-                ) do
-              %>
-                <%= image_tag("icons/unchecked.svg")%>
-              <% end %>
-            <% end %>
-
-            <%= image_tag("icons/more_info.svg")%>
-          </div>
-        </div>
-      </div>
+      <%= render partial: "search/card_idea", locals: { card: card } %>
     <% end %>
   </div>
 

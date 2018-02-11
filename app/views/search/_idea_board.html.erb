@@ -8,29 +8,7 @@
       </div>
     <% else %>
       <% current_idea_board.cards.each do |card| %>
-        <div class="result">
-          <div class="flexible">
-            <%= image_tag("icons/quote.svg", class: "filetype")%>
-            <div class="content">
-              <p><%= card.quote %></p>
-              <p><%= card.url %></p>
-            </div>
-            <div class="rightcontent">
-              <%=
-                link_to(
-                    remove_idea_card_path(
-                        idea_board_id: current_idea_board.id,
-                        card_id: card.id
-                    ),
-                    method: :delete
-                ) do
-              %>
-                <%= image_tag("icons/check_yes.svg")%>
-              <% end %>
-              <%= image_tag("icons/more_info.svg")%>
-            </div>
-          </div>
-        </div>
+        <%= render partial: "search/card_idea", locals: { card: card } %>
       <% end %>
     <% end %>
   </div>
