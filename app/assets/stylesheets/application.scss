@@ -227,7 +227,7 @@ img.filetype {
   border-color: #CA7133;
   opacity:.9;
 }
-a.buttontag, a.huttontag-inactive:hover {
+a.buttontag, a.buttontag.buttontag-inactive:hover {
   padding:6px 16px !important;
 
   background-color: #e3b94b;
@@ -237,7 +237,8 @@ a.buttontag, a.huttontag-inactive:hover {
   border-color: #e3b94b;
   margin:1px 3px;
 }
-a.buttontag:hover, a.huttontag-inactive {
+
+a.buttontag:hover, a.buttontag-inactive {
   background-color: white;
   border: 1px solid #e3b94b;
   border-radius:6px;
@@ -245,7 +246,15 @@ a.buttontag:hover, a.huttontag-inactive {
   opacity:.9;
 }
 
-a.buttontag-disabled {
+a.buttontag-disabled, a.buttontag.buttontag-disabled:hover {
+  padding:6px 16px !important;
+
+  background-color: #e3b94b;
+  border-width:1px;
+  color: white;
+  border-radius:6px;
+  border-color: #e3b94b;
+  margin:1px 3px;
   opacity: .4;
 }
 
