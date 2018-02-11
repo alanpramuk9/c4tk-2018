@@ -48,8 +48,8 @@ private
   end
 
   def ensure_valid_card_type
-    if params[:type].present? && params[:type] != card.type_identifier
-      redirect_to new_card_path(card.type_identifier)
+    if params[:type].present? && params[:type] != card.type
+      redirect_to new_card_path(card.type)
     end
   end
 

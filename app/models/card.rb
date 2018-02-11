@@ -10,7 +10,7 @@ class Card < ApplicationRecord
   validates :user, presence: true
 
   def self.as_type(type)
-    type ||= "quote"
+    type ||= "Quote"
     type = type.camelize
     type = "Quote" unless Kernel.const_defined?(type)
     klass = Kernel.const_get(type)
