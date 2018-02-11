@@ -1,23 +1,7 @@
 <div class="result">
   <div class="flexible">
     <%= image_tag("icons/#{card.type_identifier}.svg", class: "filetype")%>
-    <div class="content">
-      <p><%= card.title %></p>
-      <% case card %>
-      <% when Song, Video %>
-        <%= link_to card.url %>
-      <% when Picture %>
-        <%= image_tag card.url, class: "img-thumbnail", style: "max-width: 200px; max-height: 100px" %>
-      <% when Audio %>
-        <% if card.source.present? %>
-          <%= card.source %>
-        <% else %>
-          <%= link_to card.url %>
-        <% end %>
-      <% else %>
-        <%= truncate(card.quote, length: 150) %>
-      <% end %>
-    </div>
+    <%= render partial: "cards/abstract_content", locals: { card: card } %>
     <div class="rightcontent">
       <% if current_user.latest_idea_board.card?(card) %>
         <%=
@@ -45,12 +29,11 @@
         <% end %>
       <% end %>
 
-      <%= link_to(card_path(card)) do %>
+      <div data-toggle="modal" data-target="#cardModal<%= card.id %>">
         <%= image_tag("icons/more_info.svg")%>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>
-<div class="modal">
 
-</div>
+<%= render partial: "cards/modal", locals: { card: card } %>

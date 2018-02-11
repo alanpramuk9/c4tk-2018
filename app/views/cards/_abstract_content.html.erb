@@ -1,0 +1,17 @@
+<div class="content">
+  <p><%= card.title %></p>
+  <% case card %>
+  <% when Song, Video %>
+    <%= external_link_to card.url %>
+  <% when Picture %>
+    <%= image_tag card.url, class: "img-thumbnail", style: "max-width: 200px; max-height: 100px" %>
+  <% when Audio %>
+    <% if card.source.present? %>
+      <%= card.source %>
+    <% else %>
+      <%= external_link_to card.url %>
+    <% end %>
+  <% else %>
+    <%= truncate(card.quote, length: 150) %>
+  <% end %>
+</div>

@@ -1,0 +1,42 @@
+<div class="modal fade" id="cardModal<%= card.id %>" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header mh">
+        <div class="modalflex">
+          <h3 class="modal-title"><%= card.title %></h3>
+          <p class="date">Added <%= card.created_at.to_formatted_s(:standard) %></p>
+        </div>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body mb">
+        <% case card %>
+        <% when Song, Video %>
+          <% if youtube_url?(card.url) %>
+            <%= card_youtube_iframe(card) %>
+          <% else %>
+            <%= external_link_to card.url %>
+          <% end %>
+        <% when Picture %>
+          <%= image_tag card.url, class: "img-thumbnail", style: "max-width: 600px; max-height: 300px" %>
+        <% when Audio %>
+          <% if card.source.present? %>
+            <%= card.source %>
+          <% else %>
+            <%= external_link_to card.url %>
+          <% end %>
+        <% else %>
+          <p style="font-size:1.2em"><%= card.quote %></p>
+          <p style="float:right; opacity:.8;">From Martin Luther King Jr in All Labor That Uplifts Humanity</p>
+        <% end %>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btnmodal" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
