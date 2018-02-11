@@ -16,6 +16,7 @@ require "tag"
 Tag.where(type: "TheologicalTheme").delete_all
 
 TOPICS = [
+  ["Adoption", ["Foster Care", "Orphan Care"]],
   ["Apologetics", ["Defense", "Giving An Answer"]],
   ["Apostles Creed", []],
   ["Arminianism", []],

@@ -38,14 +38,13 @@
             <p><%= card.url %></p>
           </div>
           <div class="rightcontent">
-            <div><%= image_tag("icons/check_yes.svg")%></div>
-            <div><%= image_tag("icons/more_info.svg")%></div>
-
+            <%= image_tag("icons/check_yes.svg")%>
+            <%= image_tag("icons/more_info.svg")%>
           </div>
         </div>
       </div>
     <% end %>
   </div>
 
-  <%# render partial: "search/image_board" %>
+  <%= render partial: "search/idea_board" %>
 </div>

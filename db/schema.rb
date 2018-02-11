@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180210235515) do
+ActiveRecord::Schema.define(version: 20180211140357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "card_ideas", force: :cascade do |t|
+    t.bigint "idea_board_id"
+    t.bigint "card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_card_ideas_on_card_id"
+    t.index ["idea_board_id"], name: "index_card_ideas_on_idea_board_id"
+  end
 
   create_table "card_tags", force: :cascade do |t|
     t.bigint "card_id"
@@ -39,8 +48,25 @@ ActiveRecord::Schema.define(version: 20180210235515) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "sponsored"
     t.index ["type"], name: "index_cards_on_type"
     t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
+  create_table "idea_boards", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tag_ideas", force: :cascade do |t|
+    t.bigint "idea_board_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["idea_board_id"], name: "index_tag_ideas_on_idea_board_id"
+    t.index ["tag_id"], name: "index_tag_ideas_on_tag_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -60,6 +86,10 @@ ActiveRecord::Schema.define(version: 20180210235515) do
     t.index ["email"], name: "index_users_on_email"
   end
 
+  add_foreign_key "card_ideas", "cards"
+  add_foreign_key "card_ideas", "idea_boards"
   add_foreign_key "card_tags", "cards"
   add_foreign_key "card_tags", "tags"
+  add_foreign_key "tag_ideas", "idea_boards"
+  add_foreign_key "tag_ideas", "tags"
 end
