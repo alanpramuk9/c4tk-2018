@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :cards, except: [:index, :new]
   resources :characters, only: [:index]
   resources :sessions, only: [:create]
-  resources :theological_themes, only: [:index]
   resources :topics, only: [:index]
 
   get "/cards/new/:type" => "cards#new", as: :new_card
@@ -23,5 +22,9 @@ Rails.application.routes.draw do
 
   get "/pages/:page" => "pages#show"
 
-  get "*not_found" => "pages#not_found"
+  get "/search" => "search#index", as: :search
+
+  constraints format: /\.html/ do
+    get "*not_found.:format" => "pages#not_found"
+  end
 end

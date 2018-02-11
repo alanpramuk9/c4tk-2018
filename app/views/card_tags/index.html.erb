@@ -9,7 +9,14 @@
       <%= form_for(Topic.new, as: :tag, url: add_card_tag_path) do |form| %>
         <%= form.hidden_field(:type) %>
         <%= form.select(:canonical_name, Topic.select_options(Topic.canonical.where.not(id: card.tags))) %>
-        <%= form.submit("Add Tag") %>
+        <%= form.submit("Add Topic") %>
+      <% end %>
+    </div>
+    <div class="col-sm">
+      <%= form_for(Character.new, as: :tag, url: add_card_tag_path) do |form| %>
+        <%= form.hidden_field(:type) %>
+        <%= form.select(:canonical_name, Topic.select_options(Character.canonical.where.not(id: card.tags))) %>
+        <%= form.submit("Add Character") %>
       <% end %>
     </div>
   </div>

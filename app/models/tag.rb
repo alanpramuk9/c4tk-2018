@@ -17,9 +17,6 @@ class Tag < ApplicationRecord
   end
 end
 
-class TheologicalTheme < Tag
-end
-
 class Topic < Tag
 end
 
