@@ -64,4 +64,8 @@ Guest = Naught.build do |config|
   def name
     "Honored Guest"
   end
+
+  def latest_idea_board
+    IdeaBoard.null
+  end
 end

@@ -7,6 +7,10 @@ class IdeaBoard < ApplicationRecord
   has_many :tag_ideas
   has_many :tags, through: :tag_ideas
 
+  def self.null
+    GuestBoard.new
+  end
+
   def card?(card)
     cards.include?(card)
   end
@@ -21,5 +25,21 @@ class IdeaBoard < ApplicationRecord
 
   def empty?
     cards.none?
+  end
+end
+
+GuestBoard = Naught.build do |config|
+  config.impersonate IdeaBoard
+
+  def title
+    "Guest User"
+  end
+
+  def description
+    "Sign in to save your cards."
+  end
+
+  def cards
+    []
   end
 end

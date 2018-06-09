@@ -2,37 +2,43 @@
   <div class="flexible">
     <%= image_tag("icons/#{card.type_identifier}.svg", class: "filetype")%>
     <%= render partial: "cards/abstract_content", locals: { card: card } %>
-    <div class="rightcontent">
-      <% if current_user.latest_idea_board.card?(card) %>
-        <%=
-          link_to(
-            remove_idea_card_path(
-              idea_board_id: current_idea_board.id,
-              card_id: card.id
-            ),
-            method: :delete
-          ) do
-        %>
-          <%= image_tag("icons/check_yes.svg")%>
-        <% end %>
-      <% else %>
-        <%=
-          link_to(
-            add_idea_card_path(
-              idea_board_id: current_idea_board.id,
-              card_id: card.id
-            ),
-            method: :post
-          ) do
-        %>
-          <%= image_tag("icons/unchecked.svg")%>
-        <% end %>
-      <% end %>
-
-      <div class="modal-toggle" data-toggle="modal" data-target="#cardModal<%= card.id %>">
-        <%= image_tag("icons/more_info.svg")%>
+    <% if current_user.guest? %>
+      <div class="rightcontent">
+        <%= image_tag("icons/unchecked.svg") %>
       </div>
-    </div>
+    <% else %>
+      <div class="rightcontent">
+        <% if current_user.latest_idea_board.card?(card) %>
+          <%=
+            link_to(
+              remove_idea_card_path(
+                idea_board_id: current_idea_board.id,
+                card_id: card.id
+              ),
+              method: :delete
+            ) do
+          %>
+            <%= image_tag("icons/check_yes.svg")%>
+          <% end %>
+        <% else %>
+          <%=
+            link_to(
+              add_idea_card_path(
+                idea_board_id: current_idea_board.id,
+                card_id: card.id
+              ),
+              method: :post
+            ) do
+          %>
+            <%= image_tag("icons/unchecked.svg")%>
+          <% end %>
+        <% end %>
+
+        <div class="modal-toggle" data-toggle="modal" data-target="#cardModal<%= card.id %>">
+          <%= image_tag("icons/more_info.svg")%>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 
